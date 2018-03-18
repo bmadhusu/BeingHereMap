@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+
+<!-- <script type="text/javascript" src="BeingHere_ListenerGeo.csv.js"></script> -->
+<script type="text/javascript" src="Being_Here_Stats.xls.js"></script>
+
+
+<div id="map" style="width:100%;height:500px"></div>
+
+<script>
+
+      var map;
+      var geocoder;
+      var infowindow;
+
+
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: 0, lng: 0},
+          zoom: 2
+        });
+
+        geocoder = new google.maps.Geocoder();
+        infowindow = new google.maps.InfoWindow;
+      
+      function addCountry(country) {
+
+          console.log(country);
+          var pos = new google.maps.LatLng(country["lat"], country["lon"]);
+
+          ["country"], listener_locations[i]["num_listeners"]
+
+           var marker = new google.maps.Marker({
+               map: map,
+               position: pos
+           });
+
+           marker.addListener('click', function(content) {
+            // infowindow.setContent(country["country"] + "; Number of Listeners: " + country["num_listeners"]);
+            infowindow.setContent(country["country"]);
+            infowindow.open(map, marker);
+           })
+        }
+      
+
+      for (var i = 0; listener_locations.length; i++) {
+        addCountry(listener_locations[i]);
+      }
+
+
+    }
+
+</script>
+  
+<script src="https://maps.googleapis.com/maps/api/js?callback=initMap"></script>
+
+
+</body>
+</html>
